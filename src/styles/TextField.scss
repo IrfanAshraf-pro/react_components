@@ -1,0 +1,125 @@
+$primary-color: #fff;
+$secondary-color: #363636;
+$text-color: #898989;
+$input-color: #1bbeff;
+$padding: .75rem 1rem;
+$line-height: 1.5rem;
+$border: #bbbbbb;
+
+.input__outline {
+    margin: 4rem;
+    height: 40px;
+    width: 300px;
+    position: relative;
+
+    input {
+        padding-left: .4rem;
+        height: 100%;
+        width: 100%;
+        border: none;
+        font-size: 1rem;
+        outline: none;
+        border-bottom: 2px solid silver;
+        border-top-left-radius: .125rem;
+        border-top-right-radius: .125rem;
+    }
+
+    input:focus~label,
+    input:valid~label {
+        transform: translateY(-1.25rem);
+        font-size: .875rem;
+        color: $input-color
+    }
+
+    label {
+        position: absolute;
+        bottom: .6rem;
+        left: .4rem;
+        color: $text-color;
+        pointer-events: none;
+        transition: all .3s ease;
+    }
+
+    .underline {
+        position: absolute;
+        height: 2px;
+        width: 103%;
+        bottom: -3.5px;
+
+        &::before {
+            position: absolute;
+            content: "";
+            left: 0%;
+            height: 100%;
+            width: 100%;
+            background-color: $input-color;
+            transform: scaleX(0);
+            transition: all .3s ease;
+        }
+    }
+
+    input:focus~.underline::before,
+    input:valid~.underline::before {
+        transform: scaleX(1);
+    }
+}
+
+
+.input__contained {
+    width: 360px;
+    position: relative;
+    border: 3px solid $border;
+    border-radius: 8px;
+    margin: 32px;
+    box-sizing: border-box;
+
+    input {
+        padding: $padding;
+        border: none;
+        outline: none;
+        background-color: transparent;
+        width: 100%;
+        color: $text-color;
+        font-size: 16px;
+        line-height: $line-height;
+    }
+
+    &:hover,
+    &:focus-within {
+        border-color: $input-color;
+    }
+
+    & input:focus,
+    &:hover input {
+        color: $input-color;
+    }
+
+
+    label {
+        position: absolute;
+        background-color: transparent;
+        padding: $padding;
+        line-height: $line-height;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        color: $text-color;
+        cursor: text;
+        transition: all .3s ease;
+    }
+
+    &:hover label {
+        color: $input-color;
+    }
+
+    &:focus-within label,
+    & input:not(:placeholder-shown)~label {
+        padding: 0px 8px;
+        background-color: $primary-color;
+        top: -12px;
+        left: 16px;
+        bottom: auto;
+        color: $secondary-color;
+    }
+
+}
